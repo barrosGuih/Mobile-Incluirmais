@@ -1,3 +1,5 @@
+'use client'
+import { useState, useEffect } from 'react';
 import { Image, Text, View, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -6,16 +8,27 @@ import { Button } from '@react-navigation/elements';
 import perfil from '../tabnavigation/userperfil.png';
 import Fundo from '../tabnavigation/kid.png';
 import Icon from 'react-native-vector-icons/Ionicons';
+import background from './kid.png';
 
 function HomeScreen(){
 
-const background = require('../tabnavigation/kid.png');
+const [alunos, setAlunos] = useState([])
+
+  useEffect(()=> {
+    const fetchAlunos = async () => {
+      const response = await fetch('../../api/alunos')
+      const data = await response.json()
+      setAlunos(data);
+    };
+
+    fetchAlunos();
+  }, []);
     return(
         <View style={{flex:1}}>
             <ImageBackground style={{width:'100%', height:'110%'}}source={background} resizeMode='cover'>
                 <View style={{alignItems:'center', justifyContent:'center'}}>
                     <Image source={perfil} style={{width:'40%', height: '55%',}} resizeMode= 'contain'></Image>
-                    <Text style={{color:'white', fontSize: 24, fontWeight:'bold'}}>Bem vindo, Usuario Anonimo!</Text>
+                    {alunos.map(apoiado =><Text style={{color:'white', fontSize: 24, fontWeight:'bold'}}>{`meu nome é: ${apoiado.nome}testando`}</Text>)}
                 </View>
             </ImageBackground>
         </View>
