@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "autchatmobile",
-    "slug": "autchatmobile",
+    "name": "Incluir+",
+    "slug": "Incluir+ mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.mp4",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logo.mp4",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#13A9FF",
       "newArchEnabled": true
     },
     "ios": {
@@ -17,12 +17,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/"
     },
     "experiments": {
       "turboModules": true

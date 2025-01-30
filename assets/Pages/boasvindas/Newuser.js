@@ -2,7 +2,6 @@ import { StatusBar } from 'react-native';
 import { StyleSheet, Text, View, Image, TouchableOpacity, } from 'react-native';
 import React from 'react';
 import {Login} from '../inicio/Inicio';
-import {Home} from '../Home/home';
 import Swiper from 'react-native-swiper';
 import Image1 from './image1.png';
 import Image2 from './Image2.png';

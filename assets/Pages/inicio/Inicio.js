@@ -1,14 +1,16 @@
 import { StatusBar } from 'react-native';
 import {useState} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, Alert  } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from 'react-native';
 import React from 'react';
 import Logo from './logo.png';
+import { LinearGradient } from 'expo-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function Login({navigation}){
 
   return (
-      <View style={styles.container}>
+      <LinearGradient colors={['#13AAFF', '#3F00C6']} style={styles.container}>
         <View style={styles.form}>
           <View style={styles.conteudo}>
             <Image style={styles.logo} source={Logo}/>
@@ -31,8 +33,7 @@ export default function Login({navigation}){
                 <Text style={styles.labelbotao}>ENTRAR</Text>
                 </TouchableOpacity>
             <Text style={styles.senhaesqueceu}>Esqueceu a senha?</Text>
-      </View>
-
+      </LinearGradient>
   );
 }
 
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
   entrar:{
     textAlign: 'center',
     marginTop: '10%',
-    fontSize: '30',
+    fontSize: 30,
     fontWeight: 'bold'
   },
   caixadetexto:{
