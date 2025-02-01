@@ -13,7 +13,6 @@ import background from './kid.png';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Platform, insets } from 'react-native';
 
-
 function HomeScreen(){
 
 const [aluno, setAluno] = useState({});
@@ -98,14 +97,17 @@ function AtividadeScreen() {
       <StatusBar barStyle="light-content" backgroundColor="#3F00C6" />
       <View style={{flex: 1, margin:10, width: '97%', height: '98%', paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 25}}>
         <View style={{ width:'100%', height:'100%', overflow: 'hidden', borderRadius:32, borderWidth: 4, borderColor:'#BABCD2', backgroundColor:'white', alignItems:'center'}}>
-            <Image source={Logo} style={{width:'40%', height:'7%', backgroundColor:'#2C4FE4', marginBottom:'6%', top:'2%', borderRadius:32}} resizeMode= 'contain'/>
+            <Image source={Logo} style={{width:'40%', height:'7%', backgroundColor:'#118EF4', marginBottom:'6%', top:'2%', borderRadius:32}} resizeMode= 'contain'/>
             <View style={{flexDirection:'row', backgroundColor:'#CEDEE9', width:'55%', height:'6%', alignItems:'center', justifyContent:'center', borderRadius: 32}}>
               <Image source={iconCalendar} style={{width:'15%', backgroundColor:'#EBF7FF', height:'80%', borderWidth:4, borderColor:'#EBF7FF', marginRight:'6%', borderRadius:32}} resizeMode= 'contain'/>
               <Text style={{fontSize:15, fontWeight:'bold'}}>Lista de Atividades:</Text>
             </View>
-            <View style={{backgroundColor:'red', flex:1, width:'100%', height:'100vh'}}>
-              <View>
-                <Text>Atividades</Text>
+            <View style={{backgroundColor:'blue', flex:1, width:'97%', borderRadius:32, marginBottom:'2%', marginTop:'2%', borderWidth: 7, borderColor:'#BABCD2' }}>
+            
+              <View style={{width:'100%', height:'20%', backgroundColor:'#ECEFF1', borderTopStartRadius:22, borderTopEndRadius:22,alignItems:'center', justifyContent:'center', marginBottom:'10%' }}>
+                <View style={{backgroundColor:'ECEFF1', width:'80%', height:'60%', borderRadius:32, borderWidth:6, borderColor:'#CAD4DB', alignItems:'center', justifyContent:'center' }}>
+                <Text style={{fontSize:28, fontWeight:'bold'}}>Atividades</Text>
+                </View>              
               </View>
             </View>
             </View>
