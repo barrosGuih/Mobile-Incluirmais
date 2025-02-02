@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import background from './kid.png';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Platform, insets } from 'react-native';
+import { Agenda } from 'react-native-calendars';
 
 function HomeScreen(){
 
@@ -38,7 +39,7 @@ const id = 36;
             <ImageBackground style={{ flex: 1, width:'100%', height:'100%', overflow: 'hidden', borderRadius:32, borderWidth: 4, borderColor:'#BABCD2'}}imageStyle={{borderRadius:32}} source={background} resizeMode='cover'>
                 <View style={{alignItems:'center',}}>
                     <Image source={perfil} style={{width:'40%', height: '55%',}} resizeMode= 'contain'></Image>
-                     <Text style={{color:'white', width:'60%',fontSize: 22, fontWeight:'bold'}}>{`meu nome é: ${aluno.nome}testando`}</Text>
+                     <Text style={{color:'white', width:'60%',fontSize: 22, fontWeight:'bold', textAlign:'center'}}>{`Bem vindo ${aluno.nome}`}</Text>
                 </View>
             </ImageBackground>
           </View>
@@ -91,40 +92,153 @@ const id = 36;
   );
 }
 
-function AtividadeScreen() {
+function AtividadeScreen({navigation}) {
   return (
     <LinearGradient colors={['#13AAFF', '#3F00C6']} style={{flex: 1, alignItems:'center'}}>
       <StatusBar barStyle="light-content" backgroundColor="#3F00C6" />
       <View style={{flex: 1, margin:10, width: '97%', height: '98%', paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 25}}>
         <View style={{ width:'100%', height:'100%', overflow: 'hidden', borderRadius:32, borderWidth: 4, borderColor:'#BABCD2', backgroundColor:'white', alignItems:'center'}}>
             <Image source={Logo} style={{width:'40%', height:'7%', backgroundColor:'#118EF4', marginBottom:'6%', top:'2%', borderRadius:32}} resizeMode= 'contain'/>
-            <View style={{flexDirection:'row', backgroundColor:'#CEDEE9', width:'55%', height:'6%', alignItems:'center', justifyContent:'center', borderRadius: 32}}>
+              <View style={{flexDirection:'row', backgroundColor:'#CEDEE9', width:'55%', height:'6%', alignItems:'center', justifyContent:'center', borderRadius: 32}}>
               <Image source={iconCalendar} style={{width:'15%', backgroundColor:'#EBF7FF', height:'80%', borderWidth:4, borderColor:'#EBF7FF', marginRight:'6%', borderRadius:32}} resizeMode= 'contain'/>
               <Text style={{fontSize:15, fontWeight:'bold'}}>Lista de Atividades:</Text>
-            </View>
-            <View style={{backgroundColor:'blue', flex:1, width:'97%', borderRadius:32, marginBottom:'2%', marginTop:'2%', borderWidth: 7, borderColor:'#BABCD2' }}>
-            
-              <View style={{width:'100%', height:'20%', backgroundColor:'#ECEFF1', borderTopStartRadius:22, borderTopEndRadius:22,alignItems:'center', justifyContent:'center', marginBottom:'10%' }}>
-                <View style={{backgroundColor:'ECEFF1', width:'80%', height:'60%', borderRadius:32, borderWidth:6, borderColor:'#CAD4DB', alignItems:'center', justifyContent:'center' }}>
+                </View>
+                  <View style={{backgroundColor:'none', flex:1, width:'97%', borderRadius:32, marginBottom:'2%', marginTop:'2%', borderWidth: 7, borderColor:'#CCCDD1', alignItems:'center' }}>
+                    <View style={{width:'100%', height:'15%', backgroundColor:'#ECEFF1', borderTopStartRadius:22, borderTopEndRadius:22,alignItems:'center', justifyContent:'center', marginBottom:'10%' }}>
+                      <View style={{backgroundColor:'ECEFF1', width:'80%', height:'50%', borderRadius:32, borderWidth:6, borderColor:'#CAD4DB', alignItems:'center', justifyContent:'center' }}>
                 <Text style={{fontSize:28, fontWeight:'bold'}}>Atividades</Text>
-                </View>              
-              </View>
+                      </View>              
+                    </View>
+                      <View style={{backgroundColor:'#E6EDF1', width:'95%', height:'80%', bottom:'3.5%', borderRadius:22, alignItems:'center'}}>
+                        <TouchableOpacity
+                        onPress={() => navigation.navigate('detailsAtividade')}
+                        style={{width:'90%', height:'25%', backgroundColor:'#E2EAF0', marginTop:'3%', borderRadius:22, alignItems:'center', borderWidth:5, borderColor:'white'}}>
+                          <View style={{backgroundColor:'#CAD3DB', width:'90%', height:'30%', top:'7%', marginBottom:'3%', borderRadius:32}}>
+                              <Text style={{textAlign:'center', fontWeight:'bold'}}>Matematica</Text>
+                          </View>
+                            <View style={{backgroundColor:'#CAD3DB', width:'90%', height:'45%', top:'10%', borderRadius:22}}>
+                              <Text style={{textAlign:'start', marginLeft:'10%', fontWeight:'bold'}}>Prazo</Text>
+                              <Text style={{textAlign:'start', marginLeft:'10%', fontWeight:'bold'}}>Hora:</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                      </View>
+                   </View>
             </View>
-            </View>
-            </View>
+          </View>
     </LinearGradient>
   );
 }
 
+export function AtividadeDetailsScreen({navigation}) {
+  return (
+    <LinearGradient colors={['#13AAFF', '#3F00C6']} style={{flex: 1, alignItems:'center'}}>
+      <StatusBar barStyle="light-content" backgroundColor="#3F00C6" />
+      <View style={{flex: 1, margin:10, width: '97%', height: '98%', paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 25}}>
+        <View style={{ width:'100%', height:'100%', overflow: 'hidden', borderRadius:32, borderWidth: 4, borderColor:'#BABCD2', backgroundColor:'white', alignItems:'center'}}>
+          <TouchableOpacity 
+            onPress={()=> navigation.navigate('Home')}
+            style={{marginRight:'80%', top:'2%'}}>
+            <Text style={{fontSize:18, color:'purple'}}>Voltar</Text>
+            </TouchableOpacity>
+            <Image source={Logo} style={{width:'40%', height:'7%', backgroundColor:'#118EF4', marginBottom:'10%', marginBottom:'6%', top:'1%', borderRadius:32}} resizeMode= 'contain'/>
+              <View style={{flexDirection:'row', backgroundColor:'#CEDEE9', width:'55%', height:'6%', alignItems:'center', justifyContent:'center', borderRadius: 32}}>
+              <Image source={iconCalendar} style={{width:'15%', backgroundColor:'#EBF7FF', height:'80%', borderWidth:4, borderColor:'#EBF7FF', marginRight:'6%', borderRadius:32}} resizeMode= 'contain'/>
+              <Text style={{fontSize:15, fontWeight:'bold'}}>Lista de Atividades:</Text>
+                </View>
+                  <View style={{backgroundColor:'none', flex:1, width:'97%', borderRadius:32, marginBottom:'2%', marginTop:'2%', borderWidth: 7, borderColor:'#CCCDD1', alignItems:'center' }}>
+                    <View style={{width:'100%', height:'15%', backgroundColor:'#ECEFF1', borderTopStartRadius:22, borderTopEndRadius:22,alignItems:'center', justifyContent:'center', marginBottom:'10%' }}>
+                      <View style={{backgroundColor:'ECEFF1', width:'80%', height:'50%', borderRadius:32, borderWidth:6, borderColor:'#CAD4DB', alignItems:'center', justifyContent:'center' }}>
+                <Text style={{fontSize:18, fontWeight:'bold'}}>Matematica</Text>
+                      </View>              
+                    </View>
+                      <View style={{backgroundColor:'#E6EDF1', width:'95%', height:'30%', bottom:'3.5%', borderRadius:22}}>
+                          <Text style={{ height:'100%', padding:12, fontSize:16}}></Text>
+                      </View>
+                      <Text style={{ fontSize:24, fontWeight:'bold'}}>Prazo</Text>
+                      <View style={{flexDirection:'row', marginTop:'10%'}}>
+                        <Text style={{ fontSize:18, right:'30%'}}>Data</Text>
+                        <Text style={{ fontSize:18, left:'10%'}}>Hora</Text>
+                      </View>
+                      <TouchableOpacity style={{marginTop:'30%', width:'55%', height:'10%', backgroundColor:'#766BBB', borderRadius:32, justifyContent:'center', alignItems:'center'}}>
+                          <Text style={{fontSize:22,  color:'white', fontWeight:'bold'}}>Concluida</Text>
+                        </TouchableOpacity>
+                   </View>
+            </View>
+          </View>
+    </LinearGradient>
+  );
+}
+
+
 function AgendaScreen() {
+  const [items, setItems] = useState({});
+
+  const loadItems = (day) => {
+    setTimeout(() => {
+      const newItems = {};
+      for (let i = -15; i < 85; i++) {
+        const time = day.timestamp + i * 24 * 60 * 60 * 1000;
+        const strTime = new Date(time).toISOString().split('T')[0];
+        if (!items[strTime]) {
+          newItems[strTime] = [];
+          const numItems = Math.floor(Math.random() * 5);
+          for (let j = 0; j < numItems; j++) {
+            newItems[strTime].push({
+              name: 'Item for ' + strTime,
+              height: Math.max(50, Math.floor(Math.random() * 150))
+            });
+          }
+        }
+      }
+      setItems({ ...items, ...newItems });
+    }, 1000);
+  };
     return (
       <LinearGradient colors={['#13AAFF', '#3F00C6']} style={{flex: 1, alignItems:'center'}}>
-        <StatusBar barStyle="light-content" backgroundColor="#3F00C6" />
+      <StatusBar barStyle="light-content" backgroundColor="#3F00C6" />
       <View style={{flex: 1, margin:10, width: '97%', height: '98%', paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 25}}>
-        <View style={{ flex: 1, width:'100%', height:'100%', overflow: 'hidden', borderRadius:32, borderWidth: 4, borderColor:'#BABCD2', backgroundColor:'white', alignItems:'center'}}>
-      
+        <View style={{ width:'100%', height:'100%', overflow: 'hidden', borderRadius:32, borderWidth: 4, borderColor:'#BABCD2', backgroundColor:'white', alignItems:'center'}}>
+            <Image source={Logo} style={{width:'40%', height:'7%', backgroundColor:'#118EF4', marginBottom:'6%', top:'2%', borderRadius:32}} resizeMode= 'contain'/>
+              <View style={{flexDirection:'row', backgroundColor:'#CEDEE9', width:'55%', height:'6%', alignItems:'center', justifyContent:'center', borderRadius: 32}}>
+              <Image source={iconCalendar} style={{width:'15%', backgroundColor:'#EBF7FF', height:'80%', borderWidth:4, borderColor:'#EBF7FF', marginRight:'6%', borderRadius:32}} resizeMode= 'contain'/>
+              <Text style={{fontSize:15, fontWeight:'bold'}}>Lista de Atividades:</Text>
+                </View>
+                  <View style={{backgroundColor:'white', flex:1, width:'97%', borderRadius:32, marginBottom:'2%', marginTop:'2%', borderWidth: 7, borderColor:'#CCCDD1', alignItems:'center' }}>
+                    <View style={{width:'100%', height:'15%', backgroundColor:'#ECEFF1', borderTopStartRadius:22, borderTopEndRadius:22,alignItems:'center', justifyContent:'center', marginBottom:'10%' }}>
+                      <View style={{backgroundColor:'ECEFF1', width:'80%', height:'50%', borderRadius:32, borderWidth:6, borderColor:'#CAD4DB', alignItems:'center', justifyContent:'center' }}>
+                        <Text style={{fontSize:28, fontWeight:'bold'}}>Agenda</Text>
+                      </View>              
+                    </View>
+                    <Agenda style={{width:'100%', borderRadius:32}}
+              items={items}
+              loadItemsForMonth={loadItems}
+              selected={new Date().toISOString().split('T')[0]}
+              renderItem={(item) => {
+                return (
+                  <View style={{backgroundColor: 'white', width:'100%',borderRadius: 5,padding: 10,marginRight: 10, marginTop: 17}}>
+                    <Text>{item.name}</Text>
+                  </View>
+                );
+              }}
+              renderEmptyDate={() => {
+                return (
+                  <View style={{height: 100, width:'100%', paddingTop: 30}}><Text>No activities on this date.</Text></View>
+                );
+              }}
+              monthFormat={'MMMM yyyy'}
+              rowHasChanged={(r1, r2) => { return r1.name !== r2.name; }}
+              pastScrollRange={12}
+              futureScrollRange={12}
+              dayNames={['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']}
+              dayNamesShort={['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']}
+              todayButtonText={'Today'}
+            />
+                      
+
+                   </View>
             </View>
-            </View>
+          </View>
     </LinearGradient>
     );
   }
@@ -167,7 +281,7 @@ function HomeTabs() {
   );
 }
 
-export default function RootStack() {
+export function RootStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
