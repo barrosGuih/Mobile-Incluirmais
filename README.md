@@ -1,4 +1,4 @@
-<H1>INCLUIR +</H1>
+<H1>INCLUIR + (versão Mobile)</H1>
 
   <p>O programa Aluno Apoiador tem como objetivos promover a conscientização da importância da inclusão, estimular o senso de colaboração e cidadania, subsidiar o aluno na superação de suas dificuldades de aprendizagem, evitar desistências, desmotivação e retenção de alunos com necessidades específicas bem como alunos com deficiência.
   Esse programa vem se destacando de forma positiva e gradativa em nossa instituição, tendo resultados satisfatórios para todos que fazem parte, sendo ressaltado pelos docentes a importância desse programa, pois, os alunos apoiados passam a ter um melhor desempenho e aprendizado, além de entregar todas atividades no prazo. Contudo, há uma dificuldade de comunicação entre as partes. 
