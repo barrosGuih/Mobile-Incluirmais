@@ -17,7 +17,7 @@ import { Agenda } from 'react-native-calendars';
 function HomeScreen(){
 
 const [aluno, setAluno] = useState({});
-const id = 36;
+const id = 55;
 
   useEffect(()=> {
     const fetchAlunos = async () => {
@@ -38,7 +38,7 @@ const id = 36;
           <View style={{flex: 1, margin:10, width: '96%', height: '98%',  paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : '25'}}>
             <ImageBackground style={{ flex: 1, width:'100%', height:'100%', overflow: 'hidden', borderRadius:32, borderWidth: 4, borderColor:'#BABCD2'}}imageStyle={{borderRadius:32}} source={background} resizeMode='cover'>
                 <View style={{alignItems:'center',}}>
-                    <Image source={perfil} style={{width:'40%', height: '55%',}} resizeMode= 'contain'></Image>
+                    <Image source={{uri: aluno.foto}} style={{width:'40%', height: '55%', borderRadius: 200}} resizeMode= 'contain'></Image>
                      <Text style={{color:'white', width:'60%',fontSize: 22, fontWeight:'bold', textAlign:'center'}}>{`Bem vindo ${aluno.nome}`}</Text>
                 </View>
             </ImageBackground>
@@ -49,7 +49,7 @@ const id = 36;
 
 function ProfileScreen({navigation}) {
   const [aluno, setAluno] = useState({});
-const id = 36;
+const id = 55;
 
   useEffect(()=> {
     const fetchAlunos = async () => {
@@ -71,10 +71,9 @@ const id = 36;
       <View style={{flex: 1, margin:10, width: '97%', height: '98%', paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 25}}>
         <View style={{ flex: 1, width:'100%', height:'100%', overflow: 'hidden', borderRadius:32, borderWidth: 4, borderColor:'#BABCD2', backgroundColor:'white', alignItems:'center'}}>
           <View style={{ backgroundColor:'#E7EBEF', width: '97%', height:'25%',marginTop:'3%', alignItems: 'center', borderRadius: 22  }}>
-            <Image source={perfil} style={{width:'40%', height: '55%', marginTop:'4%', marginBottom: '3%'}} resizeMode= 'contain'></Image>
+            <Image source={{uri: aluno.foto}} style={{width:'40%', height: '55%', marginTop:'4%', marginBottom: '3%', borderRadius: 200}} resizeMode= 'contain'></Image>
             <Text style={{fontSize: 18, fontWeight: 'bold', backgroundColor:'#D1D1D1', width:'70%', height:'20%', paddingTop: 5, borderRadius:22, textAlign: 'center'}}>{`Bem vindo ${aluno.nome}`}</Text>
           </View>
-
             <Text style={{marginTop: '8%', fontSize: 22, fontWeight: 'bold', marginBottom: '8%'}}>Configurações da conta:</Text>
             <TouchableOpacity style={{backgroundColor:'#E6E6E6', width:'80%', height:'10%', justifyContent:'center', alignItems:'center', marginBottom: '4%', borderRadius:20,}}>
                 <Text style={{fontSize: 17, fontWeight:'bold'}}>Editar nome de usuário</Text>
@@ -93,6 +92,18 @@ const id = 36;
 }
 
 function AtividadeScreen({navigation}) {
+  const [atividades, setAtividades] = useState([]);
+
+  const fetchAtividades = async () => {
+    const res = await fetch('/api/alunos');
+    const data = await res.json();
+    setAtividades(data);
+}
+
+useEffect(() => {
+  fetchAtividades();
+}, []);
+
   return (
     <LinearGradient colors={['#13AAFF', '#3F00C6']} style={{flex: 1, alignItems:'center'}}>
       <StatusBar barStyle="light-content" backgroundColor="#3F00C6" />
@@ -110,7 +121,8 @@ function AtividadeScreen({navigation}) {
                       </View>              
                     </View>
                       <View style={{backgroundColor:'#E6EDF1', width:'95%', height:'80%', bottom:'3.5%', borderRadius:22, alignItems:'center'}}>
-                        <TouchableOpacity
+                        <View>{atividades.map(a => 
+                          <TouchableOpacity
                         onPress={() => navigation.navigate('detailsAtividade')}
                         style={{width:'90%', height:'25%', backgroundColor:'#E2EAF0', marginTop:'3%', borderRadius:22, alignItems:'center', borderWidth:5, borderColor:'white'}}>
                           <View style={{backgroundColor:'#CAD3DB', width:'90%', height:'30%', top:'7%', marginBottom:'3%', borderRadius:32}}>
@@ -121,6 +133,7 @@ function AtividadeScreen({navigation}) {
                               <Text style={{textAlign:'start', marginLeft:'10%', fontWeight:'bold'}}>Hora:</Text>
                             </View>
                         </TouchableOpacity>
+                        )}</View>
 
                       </View>
                    </View>
